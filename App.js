@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from '/Users/joyongju/chagoji_front/login/login.js';
-import SignUp from '/Users/joyongju/chagoji_front/login/login page.js'
-import LoginMain from '/Users/joyongju/chagoji_front/login/login main.js'
+import Login from '/Users/joyongju/han_ium_front/login/login.js';
+import SignUp from '/Users/joyongju/han_ium_front/login/login page.js'
+import LoginMain from '/Users/joyongju/han_ium_front/login/login main.js'
 
 const Stack = createStackNavigator();
 
