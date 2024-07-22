@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from '/Users/joyongju/han_ium_front/login/login.js';
-import SignUp from '/Users/joyongju/han_ium_front/login/login page.js'
-import LoginMain from '/Users/joyongju/han_ium_front/login/login main.js'
+import HomeScreen from './src/screen/Home';
+
 
 const Stack = createStackNavigator();
 
-function App() {
+const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="LoginMain" component={LoginMain} />
+      <Stack.Navigator
+        initialRouteName="앗!파트"  >
+        <Stack.Screen name="앗!파트" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+
+
 export default App;
