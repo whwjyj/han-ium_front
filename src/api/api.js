@@ -11,7 +11,7 @@ const api = axios.create({
 
 // 검색바 API: get 
 export const searchApartments = (searchTerm) => {
-    return api.get('/apartments/search', { params: { q: searchTerm } });
+    return api.get('/search', { params: { q: searchTerm } });
   };
 
 // 아파트 정보를 가져올 API : get
