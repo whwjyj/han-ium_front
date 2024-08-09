@@ -20,7 +20,7 @@ const Search = () => {
         setResults(response.data);
         setError(null);
       } catch (err) {
-        setError('오류가 발생하였습니다. 잠시만 기다려주세요');
+        setError('Something went wrong');
       }
     }
   };
@@ -32,7 +32,7 @@ const Search = () => {
   return (
     <View style={styles.view}>
       <View style={styles.searchContainer}>
-        <Icon name="search" size={25} color="#000" style={styles.searchIcon} />
+        <Icon name="search" size={20} color="#000" style={styles.searchIcon} />
         <TextInput
           style={styles.searchBar}
           placeholder="검색어를 입력해주세요"
@@ -41,16 +41,14 @@ const Search = () => {
           onSubmitEditing={handleSearch}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          secureTextEntry={false}
-          multiline={false}
-    
         />
         {isFocused && (
           <TouchableOpacity onPress={clearSearch} style={styles.clearIconContainer}>
-            <Icon name="close-circle-outline" size={25} color="#000" />
+            <Icon name="close-circle-outline" size={20} color="#000" />
           </TouchableOpacity>
         )}
       </View>
+      {error ? <Text>{error}</Text> : null}
       <FlatList
         data={results}
         keyExtractor={(item) => item.id.toString()}
@@ -67,13 +65,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   searchContainer: {
-    marginTop:5,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'grey',
-    borderRadius: 50,
-    padding: 3,
+    borderRadius: 40,
+    padding: 5,
   },
   searchBar: {
     flex: 1,
