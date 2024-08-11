@@ -15,25 +15,15 @@ const Stack = createStackNavigator();
 
 
 const HomeScreen = ({ navigation }) => {
-    return (
-      <ScrollView >
-        <View>
-          <Search />
+  return (
+    <ScrollView>
+      <View>
+        <Search />
         <ListScreen />
-        </View>
-  
-  
-  
-          {/*<View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={styles.containers}>
-              <Text>최신순</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.sec_containers}>
-              <Text >인기순</Text>
-    </TouchableOpacity> */}
-          <BottomBar />
-      </ScrollView>
-    );
-  };
+        <BottomBar />
+      </View>
+    </ScrollView>
+  );
+};
   
 export default HomeScreen; 
