@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator } from "react-native";
-import { getApartments } from './api'; 
+// import { getApartments } from './api'; // 백엔드와 연결 시 주석 해제
 
 const ListItem = ({ name, price, address, description }) => {
   return (
@@ -13,11 +13,11 @@ const ListItem = ({ name, price, address, description }) => {
   );
 };
 
-//전체화면 담당
-//아파트 데이터를 API로부터 가져와서 ScrollView를 통해 렌더링
+// 전체 화면 담당
+// 아파트 데이터를 API로부터 가져와서 ScrollView를 통해 렌더링
 
 const ListScreen = () => { 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // loading을 false로 초기화
   const [carData, setCarData] = useState([ 
     // 초기 데이터
     { id:'1',name: 'apartmets',price:1000, address:'수원',description:'혜원이집', key: 1 },
@@ -27,27 +27,27 @@ const ListScreen = () => {
     { id:'5', name:'apartements5',price:1000, address:'수원',description:'혜원이집', key: 5 }
   ]);
 
-  useEffect(() => {
-    const fetchData = async () => { 
-      try {
-        const response = await getApartments();
-        const fetchedData = response.data.map((item, index) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          address: item.address,
-          description: item.description,
-          key: index.toString() // 유일한 key로 설정
-        }));
-        setCarData(fetchedData);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => { 
+  //     try {
+  //       const response = await getApartments();
+  //       const fetchedData = response.data.map((item, index) => ({
+  //         id: item.id,
+  //         name: item.name,
+  //         price: item.price,
+  //         address: item.address,
+  //         description: item.description,
+  //         key: index.toString() // 유일한 key로 설정
+  //       }));
+  //       setCarData(fetchedData);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
