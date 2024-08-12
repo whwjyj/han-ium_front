@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from '@react-navigation/native'; // 네비게이션 추가
 import styles from '../components/Bstyles';
 import { COLORS } from '../components/theme';
-import GptIcon from '../assets/images/gpt-icon.png'; 
+import GptIcon from '../assets/images/gpt-icon.png';
 
 const TabItem = ({ tabId, currentTabId, setTabId, iconName, imageName, label }) => {
   const isSelected = currentTabId === tabId;
+  const navigation = useNavigation(); // 네비게이션 훅 사용
+
   const handlePress = () => {
     setTabId(tabId);
-    // tabId를 setTabId 함수에 전달하여 현재 선택된 탭을 변경
+    // GPT 탭이 눌렸을 때 GptScreen으로 이동
+    if (label === 'GPT') {
+      navigation.navigate('GptScreen');
+    }
   };
 
   return (
@@ -21,7 +27,7 @@ const TabItem = ({ tabId, currentTabId, setTabId, iconName, imageName, label }) 
             backgroundColor: isSelected ? COLORS.accent : COLORS.primary,
           },
         ]}
-      > 
+      >
         {iconName ? (
           <Icon name={iconName} size={25} color={COLORS.black} />
         ) : (
@@ -34,8 +40,7 @@ const TabItem = ({ tabId, currentTabId, setTabId, iconName, imageName, label }) 
 };
 
 const BottomTabBar = () => {
-
-  const [tabId, setTabId] = useState(0); // tabId 가 숫자로 받을거고 기본값은 home 이어야하니까 0
+  const [tabId, setTabId] = useState(0); // tabId 기본값 설정
 
   return (
     <View style={styles.tabRow}>

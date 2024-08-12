@@ -1,38 +1,39 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+
+
 import Search from '../components/Search';
 import ListScreen from '../components/ListScreen';
+import styles from '../components/Bstyles';
 import BottomBar from '../components/bottomtabbar';
 
+
+const Stack = createStackNavigator();
+
+
+
 const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <Search />
+    return (
+      <ScrollView >
+        <View>
+          <Search />
         <ListScreen />
+        </View>
+  
+  
+  
+          {/*<View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity style={styles.containers}>
+              <Text>최신순</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sec_containers}>
+              <Text >인기순</Text>
+    </TouchableOpacity> */}
+          <BottomBar />
       </ScrollView>
-      <BottomBar style={styles.bottomBar} />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-  },
-  bottomBar: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 20, 
-    backgroundColor: '#f8f8f8',
-    borderTopWidth: 1,
-    borderColor: '#e7e7e7',
-  },
-});
-
-export default HomeScreen;
+    );
+  };
+  
+export default HomeScreen; 

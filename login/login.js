@@ -17,6 +17,7 @@ const Login = ({ navigation }) => {
   const handleLoginPress = () => {
     console.log('Email:', email);
     console.log('Password:', password);
+    navigation.navigate('HomeScreen');
   };
 
   const handleSignUpPress = () => {
