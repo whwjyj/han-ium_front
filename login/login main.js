@@ -38,41 +38,32 @@ const LoginMain = () => {
   const handleSignUp = () => {
     // 필수 입력 필드가 모두 채워졌는지 확인
     if (
-      !name ||
-      !phone ||
-      !verificationCode ||
-      !username ||
-      !password ||
-      !confirmPassword ||
-      !email ||
-      !address.city ||
-      !address.district
+      !signupInfo.name ||
+      !signupInfo.phone ||
+      !signupInfo.verificationCode ||
+      !signupInfo.username ||
+      !signupInfo.password ||
+      !signupInfo.confirmPassword ||
+      !signupInfo.email ||
+      !signupInfo.address.city ||
+      !signupInfo.address.district
     ) {
       Alert.alert('필수 입력 오류', '모든 필수 입력 칸을 채워주세요.');
       return;
     }
 
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
-    if (password !== confirmPassword) {
+    if (signupInfo.password !== signupInfo.confirmPassword) {
       Alert.alert('비밀번호 오류', '비밀번호와 비밀번호 확인이 일치하지 않습니다.');
       return;
     }
 
     // 모든 필드가 채워졌고 비밀번호가 일치하는 경우 회원가입 정보를 콘솔에 출력하고 로그인 페이지로 이동
-    console.log('회원가입 정보:', {
-      name,
-      phone,
-      verificationCode,
-      gender,
-      username,
-      password,
-      confirmPassword,
-      email,
-      address,
-    });
+    console.log('회원가입 정보:', signupInfo);
     navigation.navigate('Login'); // 로그인 페이지로 이동
   };
 
+  
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.header}>회원가입</Text>
