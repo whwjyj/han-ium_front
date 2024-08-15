@@ -1,26 +1,24 @@
-/*
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from '../screen/Home';
-import Login from '../../login/login';
+import Login from '../../login/login'
 import SignUp from '../../login/login page';
+import LoginMain from '../../login/login main';
+import HomeScreen from '../screen/Home';
+import GptScreen from '../components/GptScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-function MainStack() {
+const AppNavigator = () => {
   return (
-    <NavigationContainer> 
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="홈" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
-        <Stack.Screen name="로그인" component={Login} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>  
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false }}/>
+      <Stack.Screen name="LoginMain" component={LoginMain} options={{headerShown: false}}/>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="GptScreen" component={GptScreen} options={{headerShown: false}} />
+    </Stack.Navigator>
   );
-}
+};
 
-export default MainStack;
-
-*/
+export default AppNavigator;
